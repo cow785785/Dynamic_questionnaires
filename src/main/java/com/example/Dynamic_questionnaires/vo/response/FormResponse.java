@@ -1,66 +1,41 @@
-package com.example.Dynamic_questionnaires.entity;
+package com.example.Dynamic_questionnaires.vo.response;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-@Entity
-@Table(name = "form")
-public class Form {
-
-	@Id
-	@Column(name = "FormId")
-	private int formId;
-
-	@Column(name = "FormName")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class FormResponse {
 	private String formName;
 
-	@Column(name = "CreatedDate")
 	private LocalDate createdDate;
 
-	@Column(name = "StartTime")
 	private LocalDate startTime;
 
-	@Column(name = "EndTime")
 	private LocalDate endTime;
 
-	@Column(name = "Status")
 	private boolean status;
 
-	public Form() {
+	private String message;
+
+	public FormResponse() {
 
 	}
-	
-	//全部的
-	public Form(int formId, String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime,
-			boolean status) {
-		this.formId = formId;
+
+	public FormResponse(String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime, boolean status,
+			String message) {
 		this.formName = formName;
 		this.createdDate = createdDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.status = status;
+		this.message = message;
 	}
 	
 	
-	
-	//少ID跟status的
-	public Form(String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime) {
-		this.formName = formName;
-		this.createdDate = createdDate;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
 
-	public int getFormId() {
-		return formId;
-	}
-
-	public void setFormId(int formId) {
-		this.formId = formId;
+	public FormResponse(String message) {
+		this.message = message;
 	}
 
 	public String getFormName() {
@@ -101,6 +76,14 @@ public class Form {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

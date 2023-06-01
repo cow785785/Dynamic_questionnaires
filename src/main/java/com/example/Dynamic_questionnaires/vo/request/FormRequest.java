@@ -1,59 +1,22 @@
-package com.example.Dynamic_questionnaires.entity;
+package com.example.Dynamic_questionnaires.vo.request;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "form")
-public class Form {
-
-	@Id
-	@Column(name = "FormId")
+public class FormRequest {
+	
 	private int formId;
 
-	@Column(name = "FormName")
 	private String formName;
 
-	@Column(name = "CreatedDate")
 	private LocalDate createdDate;
 
-	@Column(name = "StartTime")
 	private LocalDate startTime;
 
-	@Column(name = "EndTime")
 	private LocalDate endTime;
 
-	@Column(name = "Status")
 	private boolean status;
-
-	public Form() {
-
-	}
-	
-	//全部的
-	public Form(int formId, String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime,
-			boolean status) {
-		this.formId = formId;
-		this.formName = formName;
-		this.createdDate = createdDate;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.status = status;
-	}
 	
 	
-	
-	//少ID跟status的
-	public Form(String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime) {
-		this.formName = formName;
-		this.createdDate = createdDate;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
 
 	public int getFormId() {
 		return formId;
