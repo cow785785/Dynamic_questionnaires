@@ -8,99 +8,107 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "form")
-public class Form {
+@Table(name = "formcontent")
+public class FormContent {
 
 	@Id
-	@Column(name = "FormId")
+	@Column(name = "form_id")
 	private int formId;
 
-	@Column(name = "FormName")
+	@Column(name = "form_name")
 	private String formName;
 
-	@Column(name = "CreatedDate")
-	private LocalDate createdDate;
 
-	@Column(name = "StartTime")
+	@Column(name = "start_time")
 	private LocalDate startTime;
 
-	@Column(name = "EndTime")
+	@Column(name = "end_time")
 	private LocalDate endTime;
 
-	@Column(name = "Status")
+	@Column(name = "status")
 	private boolean status;
 
-	public Form() {
+	public FormContent() {
 
 	}
+
 	
 	//全部的
-	public Form(int formId, String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime,
-			boolean status) {
+	public FormContent(int formId, String formName, LocalDate startTime, LocalDate endTime, boolean status) {
 		this.formId = formId;
 		this.formName = formName;
-		this.createdDate = createdDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.status = status;
 	}
+
 	
-	
-	
-	//少ID跟status的
-	public Form(String formName, LocalDate createdDate, LocalDate startTime, LocalDate endTime) {
+	//沒有status
+	public FormContent(int formId, String formName, LocalDate startTime, LocalDate endTime) {
+		this.formId = formId;
 		this.formName = formName;
-		this.createdDate = createdDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
+
+
+	public FormContent(String formName, LocalDate startTime, LocalDate endTime) {
+		this.formName = formName;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+
 
 	public int getFormId() {
 		return formId;
 	}
 
+
 	public void setFormId(int formId) {
 		this.formId = formId;
 	}
+
 
 	public String getFormName() {
 		return formName;
 	}
 
+
 	public void setFormName(String formName) {
 		this.formName = formName;
 	}
 
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
 
 	public LocalDate getStartTime() {
 		return startTime;
 	}
 
+
 	public void setStartTime(LocalDate startTime) {
 		this.startTime = startTime;
 	}
+
 
 	public LocalDate getEndTime() {
 		return endTime;
 	}
 
+
 	public void setEndTime(LocalDate endTime) {
 		this.endTime = endTime;
 	}
+
 
 	public boolean isStatus() {
 		return status;
 	}
 
+
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	
+	
 
 }

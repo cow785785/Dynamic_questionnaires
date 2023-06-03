@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.example.Dynamic_questionnaires.entity.Form;
+import com.example.Dynamic_questionnaires.entity.FormContent;
 import com.example.Dynamic_questionnaires.repository.FormDao;
 import com.example.Dynamic_questionnaires.service.ifs.FormService;
 import com.example.Dynamic_questionnaires.vo.request.FormRequest;
@@ -15,10 +15,7 @@ import com.example.Dynamic_questionnaires.vo.response.FormResponse;
 
 @Service
 public class FormServiceImpl implements FormService {
-	
-	@Autowired
-	private FormService formService;
-	
+		
 	@Autowired
 	private FormDao formDao;
 
@@ -41,7 +38,7 @@ public class FormServiceImpl implements FormService {
 		}
 		 
 		
-		Form form = new Form(formRequest.getFormName(),formRequest.getCreatedDate(),formRequest.getStartTime(),formRequest.getEndTime());
+		FormContent form = new FormContent(formRequest.getFormId(), formRequest.getFormName(),formRequest.getStartTime(),formRequest.getEndTime());
 		formDao.save(form);
 		return new FormResponse("完成");
 	}
@@ -67,12 +64,11 @@ public class FormServiceImpl implements FormService {
 			return new FormResponse("結束時間不能早於開始時間");
 		}
 	    
-	    Optional<Form> optionalForm = formDao.findById(formRequest.getFormId());
+	    Optional<FormContent> optionalForm = formDao.findById(formRequest.getFormId());
 	    if (optionalForm.isPresent()) {
-	        Form form = optionalForm.get();
+	        FormContent form = optionalForm.get();
 	        // 更新表單的其他屬性
 	        form.setFormName(formRequest.getFormName());
-	        form.setCreatedDate(formRequest.getCreatedDate());
 	        form.setStartTime(formRequest.getStartTime());
 	        form.setEndTime(formRequest.getEndTime());
 	        
@@ -87,17 +83,17 @@ public class FormServiceImpl implements FormService {
 
 	@Override
 	public FormResponse deleteForm(FormRequest formRequest) {
-		Optional<Form> optional = formDao.findById(formRequest.getFormId());
+		Optional<FormContent> optional = formDao.findById(formRequest.getFormId());
 		if (!optional.isPresent()) {
 			return new FormResponse("沒有這個咚咚~~");
 		}
-		Form form = optional.get();
+		FormContent form = optional.get();
 		formDao.delete(form);
 		return new FormResponse("已刪除");
 	}
 
 	@Override
-	public List<Form> getAllForm() {
+	public List<FormContent> getAllForm() {
 		
 		return formDao.findAll();
 	}

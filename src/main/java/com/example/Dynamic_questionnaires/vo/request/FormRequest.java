@@ -3,20 +3,16 @@ package com.example.Dynamic_questionnaires.vo.request;
 import java.time.LocalDate;
 
 public class FormRequest {
-	
+
 	private int formId;
 
 	private String formName;
-
-	private LocalDate createdDate;
 
 	private LocalDate startTime;
 
 	private LocalDate endTime;
 
 	private boolean status;
-	
-	
 
 	public int getFormId() {
 		return formId;
@@ -32,14 +28,6 @@ public class FormRequest {
 
 	public void setFormName(String formName) {
 		this.formName = formName;
-	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
 	}
 
 	public LocalDate getStartTime() {
