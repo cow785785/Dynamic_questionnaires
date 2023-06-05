@@ -35,10 +35,10 @@ public class QuestionServiceImpl implements QuestionService {
         question.setQuestionType(questionRequest.getQuestionType());
         question.setQuestionContent(questionRequest.getQuestionContent());
 
-     // 保存 Question 实体对象到数据库
+     // 保存 Question
         questionDao.save(question);
         
-        // 创建问题选项并保存到数据库
+        // 創建問題選項，保存到資料表
         for (String optionContent : questionRequest.getOptions()) {
             QuestionOption questionOption = new QuestionOption();
             questionOption.setQuestion(question);
