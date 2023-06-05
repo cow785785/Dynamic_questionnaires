@@ -13,7 +13,7 @@ import com.example.Dynamic_questionnaires.entity.FormContent;
 import com.example.Dynamic_questionnaires.service.ifs.FormService;
 import com.example.Dynamic_questionnaires.vo.request.FormRequest;
 import com.example.Dynamic_questionnaires.vo.response.FormResponse;
-//@CrossOrigin
+@CrossOrigin
 @RestController
 public class FormController {
 	

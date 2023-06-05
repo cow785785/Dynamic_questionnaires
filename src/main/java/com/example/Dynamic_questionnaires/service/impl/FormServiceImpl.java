@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.example.Dynamic_questionnaires.entity.FormContent;
-import com.example.Dynamic_questionnaires.repository.FormDao;
+import com.example.Dynamic_questionnaires.repository.FormContentDao;
 import com.example.Dynamic_questionnaires.service.ifs.FormService;
 import com.example.Dynamic_questionnaires.vo.request.FormRequest;
 import com.example.Dynamic_questionnaires.vo.response.FormResponse;
@@ -17,7 +17,7 @@ import com.example.Dynamic_questionnaires.vo.response.FormResponse;
 public class FormServiceImpl implements FormService {
 		
 	@Autowired
-	private FormDao formDao;
+	private FormContentDao formDao;
 
 	@Override
 	public FormResponse addForm(FormRequest formRequest) {
